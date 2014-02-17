@@ -1,6 +1,6 @@
 README
 
-This is a demo of using the iioEngine JavaScript framework to fill the browser with a bunch of "angry birds" flying around and bouncing :-)
+This is an example of usage the iioEngine JavaScript framework to fill the browser with a bunch of "angry birds" flying around and bouncing :-)
 
 Ok, not very impressive, but very simple to check, review and understad the code.
 
