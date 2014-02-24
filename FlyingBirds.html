@@ -1,70 +1,70 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Flying Birds Demo</title>
-	</head>
-	<body>
-	    <script type="text/javascript" src="js/iioEngine.min.js"></script>
-		<script type="text/javascript">
+	<meta charset="UTF-8">
+	<title>Flying Birds Demo</title>
+</head>
+<body>
+	<script type="text/javascript" src="js/iioEngine.min.js"></script>
+	<script type="text/javascript">
 
-   			
-   			FlyAnimsApp = function(io){
-				io.setBGColor('#909090');
-   			  
-				var flies = [];
-				var j = 0;
-				//define an initialization function
-				initApp=function(){ 
-   				  	
-					for (var i=70; i<io.canvas.width; i+=100) {
-						flies[j] = 	new iio.Rect(i,iio.getRandomInt(30,60)).createWithAnim(imgs)
-						io.setAnimFPS(i/20, flies[j]);
-						flies[j].enableKinematics();
-						flies[j].setVel(2,5);
-						flies[j].setBound('bottom', io.canvas.height
-						,function(obj){
-							obj.vel.y = -5;
-							return true;
-						});
-						flies[j].setBound('top', 0
-						,function(obj){
-							obj.vel.y = +5;
-							return true;
-						});
-						flies[j].setBound('right', io.canvas.width
-						,function(obj){
-							obj.vel.x = -2;
-							return true;
-						});
+       FlyAnimsApp = function(io) {
+			
+			io.setBGColor('#909090');
+   
+			var flies = [];
+			var j = 0;
+			//define an initialization function
+			initApp=function(){
+   
+				for (var i=70; i<io.canvas.width; i+=100) {
+					flies[j] = new iio.Rect(i,iio.getRandomInt(30,60)).createWithAnim(imgs).enableKinematics().setTorque(.15);
+					io.setAnimFPS(i/20, flies[j]);
+					flies[j].enableKinematics();
+					flies[j].setVel(2,5);
+					flies[j].setBound('bottom', io.canvas.height
+					,function(obj){
+					obj.vel.y = -5;
+					return true;
+					});
+					flies[j].setBound('top', 0
+					,function(obj){
+					obj.vel.y = +5;
+					return true;
+					});
+					flies[j].setBound('right', io.canvas.width
+					,function(obj){
+					obj.vel.x = -2;
+					return true;
+					});
 
-						flies[j].setBound('left', 0
-						,function(obj){
-							obj.vel.x = +2;
-							return true;
-						});
-
-
-						j++;
-   			  		}
-   			  };
-   			 
-   			  //load the source images
-   			  var imgs = [];
-   			  imgs[0] = new Image();
-   			  imgs[0].src='img/fly_normal.png';
-   			  imgs[1] = new Image();
-   			  imgs[1].src='img/fly_fly.png';
-   			 
-   			  //initialize app once the first image has loaded
-   			  imgs[0].onload = initApp;
-   			 
-   			}; 
-   			
-   			
+					flies[j].setBound('left', 0
+					,function(obj){
+					obj.vel.x = +2;
+					return true;
+					});
 
 
-    		iio.start(FlyAnimsApp);
-    	</script>
-	</body>
+					j++;
+    			}
+    	};
+   
+		//load the source images
+		var imgs = [];
+		imgs[0] = new Image();
+		imgs[0].src='img/fly_normal.png';
+		imgs[1] = new Image();
+		imgs[1].src='img/fly_fly.png';
+
+		//initialize app once the first image has loaded
+		imgs[0].onload = initApp;
+   
+    };
+   
+   
+
+
+     iio.start(FlyAnimsApp);
+     </script>
+</body>
 </html>
