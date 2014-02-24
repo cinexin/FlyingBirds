@@ -6,47 +6,47 @@
 	</head>
 	<body>
 	    <script type="text/javascript" src="js/iioEngine.min.js"></script>
-    	<script type="text/javascript">
+		<script type="text/javascript">
 
    			
    			FlyAnimsApp = function(io){
-   				io.setBGColor('#909090');
+				io.setBGColor('#909090');
    			  
-   			  var flies = [];
-   			  var j = 0;
-              //define an initialization function
-   			  initApp=function(){ 
+				var flies = [];
+				var j = 0;
+				//define an initialization function
+				initApp=function(){ 
    				  	
-   			  	for (var i=70; i<io.canvas.width; i+=100) {
-   			    	flies[j] = 	new iio.Rect(i,iio.getRandomInt(30,60)).createWithAnim(imgs)
-   			      	io.setAnimFPS(i/20, flies[j]);
-   			 		 flies[j].enableKinematics();
-   			 		 flies[j].setVel(2,5);
-   			 		 flies[j].setBound('bottom', io.canvas.height
-   	   			        ,function(obj){
-   	   			          obj.vel.y = -5;
-   	   			          return true;
-   	   			        });
-   			 		flies[j].setBound('top', 0
-   	   	   			        ,function(obj){
-   	   	   			          obj.vel.y = +5;
-   	   	   			          return true;
-   	   	   			        });
-   			 		flies[j].setBound('right', io.canvas.width
-   	   	   			        ,function(obj){
-   	   	   			          obj.vel.x = -2;
-   	   	   			          return true;
-   	   	   			        });
+					for (var i=70; i<io.canvas.width; i+=100) {
+						flies[j] = 	new iio.Rect(i,iio.getRandomInt(30,60)).createWithAnim(imgs)
+						io.setAnimFPS(i/20, flies[j]);
+						flies[j].enableKinematics();
+						flies[j].setVel(2,5);
+						flies[j].setBound('bottom', io.canvas.height
+						,function(obj){
+							obj.vel.y = -5;
+							return true;
+						});
+						flies[j].setBound('top', 0
+						,function(obj){
+							obj.vel.y = +5;
+							return true;
+						});
+						flies[j].setBound('right', io.canvas.width
+						,function(obj){
+							obj.vel.x = -2;
+							return true;
+						});
 
-   			 		flies[j].setBound('left', 0
-   	   	   			        ,function(obj){
-   	   	   			          obj.vel.x = +2;
-   	   	   			          return true;
-   	   	   			        });
+						flies[j].setBound('left', 0
+						,function(obj){
+							obj.vel.x = +2;
+							return true;
+						});
 
 
-   			    	j++;
-   			  	}
+						j++;
+   			  		}
    			  };
    			 
    			  //load the source images
